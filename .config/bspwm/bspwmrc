@@ -1,0 +1,54 @@
+#!/bin/sh
+
+B="bspc"
+
+# Clear all
+$B rule -r "*"
+
+# Reset monitor desktop
+$B monitor primary -d I II III IV V VI VII VIII
+
+C="$B config"
+
+# General settings
+$C automatic_scheme alternate
+$C initial_polarity second_child
+$C pointer_modifier mod4
+$C pointer_action1 move
+$C pointer_action2 resize_side
+$C click_to_focus none
+
+$C focus_follows_pointer true
+$C history_aware_focus true
+$C remove_disabled_monitors true
+$C remove_unplugged_monitors true
+$C merge_overlapping_monitors true
+$C pointer_follows_monitor true
+
+# Colors
+$C normal_border_color "#45413B"
+$C active_border_color "#6D7364"
+$C focused_border_color "#7E715D"
+$C presel_feedback_color "#2C2C2C"
+
+# Vanity
+$C top_padding 75
+$C bottom_padding 10
+$C left_padding 12
+$C right_padding 12
+$C border_width 2
+$C window_gap 8
+
+R="$B rule -a"
+
+$R icecat desktop=\^1
+$R firefox desktop=\^1
+$R chromium desktop=\^1
+
+$R discord desktop=\^3
+
+sxhkd &
+sh ~/.config/polybar/launch.sh
+feh --bg-fill ~/Themes/Arktik/arktik-wallpaper.png
+picom -b --config ~/.config/picom.conf
+mopidy
