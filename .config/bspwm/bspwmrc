@@ -41,12 +41,6 @@ $C window_gap 8
 
 R="$B rule -a"
 
-$R icecat desktop=\^1
-$R firefox desktop=\^1
-$R chromium desktop=\^1
-
-$R discord desktop=\^3
-
 sxhkd &
 sh ~/.config/polybar/launch.sh
 feh --bg-fill ~/Themes/Arktik/arktik-wallpaper.png
